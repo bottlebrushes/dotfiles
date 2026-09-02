@@ -1,6 +1,6 @@
 # Dotfiles — Firefox Monochrome Extension Icons
 
-A clean, uniform monochrome icon setup for Firefox that replaces extension toolbar icons with crisp, adaptive [Simple Icons](https://simpleicons.org/) vectors.
+A clean, uniform monochrome icon setup for Firefox that replaces specific extension toolbar icons with crisp, adaptive [Simple Icons](https://simpleicons.org/) vectors.
 
 ---
 
@@ -8,9 +8,8 @@ A clean, uniform monochrome icon setup for Firefox that replaces extension toolb
 
 - **Simple Icons Official Vectors**: Authentic brand silhouettes for primary extensions (uBlock Origin, Bitwarden, Dark Reader) normalized to unified toolbar silver-grey.
 - **Theme-Adaptive**: Embedded `@media (prefers-color-scheme: dark)` styling ensures icons automatically render `#cfcfd8` in dark mode and `#2b2a33` in light mode.
-- **Greyscale Fallback**: Extensions without custom SVGs are cleanly desaturated and dimmed with smooth hover-reveal animations.
-- **Badge Preservation**: Notification badges (e.g. ad block counts, item counts) remain completely untouched and legible.
-- **Zero Overhead**: Pure CSS (`userChrome.css`) and local vector assets — no remote requests, scripts, or bloat.
+- **Non-Intrusive**: Only customized extensions receive custom icons; all other extensions, built-in icons, and notification badges remain completely untouched with their default appearance.
+- **Zero Overhead**: Pure CSS (`userChrome.css`) and local vector assets — no remote requests, background scripts, or performance impact.
 
 ---
 
@@ -35,7 +34,7 @@ A clean, uniform monochrome icon setup for Firefox that replaces extension toolb
 ## Quick Installation
 
 ```bash
-git clone https://github.com/bettercoderthanyou/dotfiles.git
+git clone https://github.com/bottlebrushes/dotfiles.git
 cd dotfiles
 ./install.sh
 ```

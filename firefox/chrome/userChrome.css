@@ -1,45 +1,16 @@
 /* Clean monochrome WebExtension icons.
  *
- * This intentionally leaves Firefox's built-in toolbar icons, tab favicons,
- * bookmarks, and extension notification badges unchanged.
+ * Replaces configured extension icons with custom vector silhouettes.
+ * Leaves all other extension icons, built-in icons, and badges untouched.
  */
 
 @-moz-document url("chrome://browser/content/browser.xhtml") {
   :root {
-    --clean-extension-icon-opacity: 0.75;
+    --clean-extension-icon-opacity: 0.8;
     --clean-extension-icon-color: var(--toolbarbutton-icon-fill, #cfcfd8);
   }
 
-  /* Extensions pinned to the navigation bar. */
-  #nav-bar toolbarbutton.webextension-browser-action
-    > .toolbarbutton-badge-stack
-    > .toolbarbutton-icon,
-
-  /* Extensions displayed in the unified extensions panel. */
-  #unified-extensions-panel .unified-extensions-item-icon,
-  #unified-extensions-panel
-    .unified-extensions-item
-    .webextension-browser-action.subviewbutton
-    > .toolbarbutton-badge-stack
-    > .toolbarbutton-icon {
-    filter: grayscale(100%) !important;
-    opacity: var(--clean-extension-icon-opacity) !important;
-    transition: opacity 120ms ease-in-out !important;
-  }
-
-  #nav-bar toolbarbutton.webextension-browser-action:hover
-    > .toolbarbutton-badge-stack
-    > .toolbarbutton-icon,
-  #nav-bar toolbarbutton.webextension-browser-action[open="true"]
-    > .toolbarbutton-badge-stack
-    > .toolbarbutton-icon,
-  #unified-extensions-panel
-    .unified-extensions-item-action-button:hover
-    .unified-extensions-item-icon {
-    opacity: 1 !important;
-  }
-
-  /* Matching local outline icons for the primary pinned extensions. */
+  /* Custom Simple Icons for primary pinned extensions. */
   :is(
       #ublock0_raymondhill_net-browser-action .toolbarbutton-icon,
       [data-extensionid="uBlock0@raymondhill.net" i] .toolbarbutton-icon,
@@ -73,6 +44,7 @@
     list-style-image: url("extension-icons/darkreader.svg") !important;
   }
 
+  /* Appearance and hover transitions for custom icon buttons. */
   :is(
       #ublock0_raymondhill_net-browser-action,
       #_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action,
@@ -90,8 +62,8 @@
     color: var(--clean-extension-icon-color) !important;
     fill: var(--clean-extension-icon-color) !important;
     stroke: var(--clean-extension-icon-color) !important;
-    filter: none !important;
     opacity: var(--clean-extension-icon-opacity) !important;
+    transition: opacity 120ms ease-in-out !important;
   }
 
   :is(
