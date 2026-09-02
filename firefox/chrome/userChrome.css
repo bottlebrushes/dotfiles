@@ -1,0 +1,112 @@
+/* Clean monochrome WebExtension icons.
+ *
+ * This intentionally leaves Firefox's built-in toolbar icons, tab favicons,
+ * bookmarks, and extension notification badges unchanged.
+ */
+
+@-moz-document url("chrome://browser/content/browser.xhtml") {
+  :root {
+    --clean-extension-icon-opacity: 0.75;
+    --clean-extension-icon-color: var(--toolbarbutton-icon-fill, #cfcfd8);
+  }
+
+  /* Extensions pinned to the navigation bar. */
+  #nav-bar toolbarbutton.webextension-browser-action
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-icon,
+
+  /* Extensions displayed in the unified extensions panel. */
+  #unified-extensions-panel .unified-extensions-item-icon,
+  #unified-extensions-panel
+    .unified-extensions-item
+    .webextension-browser-action.subviewbutton
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-icon {
+    filter: grayscale(100%) !important;
+    opacity: var(--clean-extension-icon-opacity) !important;
+    transition: opacity 120ms ease-in-out !important;
+  }
+
+  #nav-bar toolbarbutton.webextension-browser-action:hover
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-icon,
+  #nav-bar toolbarbutton.webextension-browser-action[open="true"]
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-icon,
+  #unified-extensions-panel
+    .unified-extensions-item-action-button:hover
+    .unified-extensions-item-icon {
+    opacity: 1 !important;
+  }
+
+  /* Matching local outline icons for the primary pinned extensions. */
+  :is(
+      #ublock0_raymondhill_net-browser-action .toolbarbutton-icon,
+      [data-extensionid="uBlock0@raymondhill.net" i] .toolbarbutton-icon,
+      unified-extensions-item[extension-id="uBlock0@raymondhill.net" i]
+        .unified-extensions-item-icon
+    ) {
+    content: url("extension-icons/ublock.svg") !important;
+    list-style-image: url("extension-icons/ublock.svg") !important;
+  }
+
+  :is(
+      #_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action
+        .toolbarbutton-icon,
+      [data-extensionid="{446900e4-71c2-419f-a6a7-df9c091e268b}" i]
+        .toolbarbutton-icon,
+      unified-extensions-item[
+          extension-id="{446900e4-71c2-419f-a6a7-df9c091e268b}" i
+        ] .unified-extensions-item-icon
+    ) {
+    content: url("extension-icons/bitwarden.svg") !important;
+    list-style-image: url("extension-icons/bitwarden.svg") !important;
+  }
+
+  :is(
+      #addon_darkreader_org-browser-action .toolbarbutton-icon,
+      [data-extensionid="addon@darkreader.org" i] .toolbarbutton-icon,
+      unified-extensions-item[extension-id="addon@darkreader.org" i]
+        .unified-extensions-item-icon
+    ) {
+    content: url("extension-icons/darkreader.svg") !important;
+    list-style-image: url("extension-icons/darkreader.svg") !important;
+  }
+
+  :is(
+      #ublock0_raymondhill_net-browser-action,
+      #_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action,
+      #addon_darkreader_org-browser-action,
+      [data-extensionid="uBlock0@raymondhill.net" i],
+      [data-extensionid="{446900e4-71c2-419f-a6a7-df9c091e268b}" i],
+      [data-extensionid="addon@darkreader.org" i],
+      unified-extensions-item[extension-id="uBlock0@raymondhill.net" i],
+      unified-extensions-item[
+          extension-id="{446900e4-71c2-419f-a6a7-df9c091e268b}" i
+        ],
+      unified-extensions-item[extension-id="addon@darkreader.org" i]
+    ) :is(.toolbarbutton-icon, .unified-extensions-item-icon) {
+    -moz-context-properties: fill, stroke !important;
+    color: var(--clean-extension-icon-color) !important;
+    fill: var(--clean-extension-icon-color) !important;
+    stroke: var(--clean-extension-icon-color) !important;
+    filter: none !important;
+    opacity: var(--clean-extension-icon-opacity) !important;
+  }
+
+  :is(
+      #ublock0_raymondhill_net-browser-action,
+      #_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action,
+      #addon_darkreader_org-browser-action,
+      [data-extensionid="uBlock0@raymondhill.net" i],
+      [data-extensionid="{446900e4-71c2-419f-a6a7-df9c091e268b}" i],
+      [data-extensionid="addon@darkreader.org" i],
+      unified-extensions-item[extension-id="uBlock0@raymondhill.net" i],
+      unified-extensions-item[
+          extension-id="{446900e4-71c2-419f-a6a7-df9c091e268b}" i
+        ],
+      unified-extensions-item[extension-id="addon@darkreader.org" i]
+    ):hover :is(.toolbarbutton-icon, .unified-extensions-item-icon) {
+    opacity: 1 !important;
+  }
+}
